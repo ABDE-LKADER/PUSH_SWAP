@@ -6,15 +6,15 @@
 #    By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 17:23:22 by abadouab          #+#    #+#              #
-#    Updated: 2024/02/18 15:12:02 by abadouab         ###   ########.fr        #
+#    Updated: 2024/02/18 15:42:31 by abadouab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	push_swap
 SRCS		=	mandatory/parse_in.c \
 				mandatory/push_swap.c \
-				mandatory/sort_plus.c  \
-				mandatory/best_move.c   \
+				mandatory/best_move.c  \
+				mandatory/sort_tools.c  \
 				mandatory/actions_sp.c   \
 				mandatory/actions_ro.c    \
 				mandatory/check_errors.c   \
