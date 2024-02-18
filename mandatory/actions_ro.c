@@ -6,56 +6,40 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:52 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/17 22:46:30 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:08:20 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_stack **stack_a, int print)
+void	rab(t_stack **stack, int print)
 {
 	t_stack	*temp;
 	t_stack	*last;
 
-	if (size_stack(*stack_a) < 2)
+	if (size_stack(*stack) < 2)
 		return ;
-	temp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	last = *stack_a;
+	temp = *stack;
+	*stack = (*stack)->next;
+	last = *stack;
 	while (last->next)
 		last = last->next;
 	last->next = temp;
 	temp->next = NULL;
-	if (print)
+	if (print == 1)
 		ft_printf("ra\n");
-}
-
-void	rb(t_stack **stack_b, int print)
-{
-	t_stack	*temp;
-	t_stack	*last;
-
-	if (size_stack(*stack_b) < 2)
-		return ;
-	temp = *stack_b;
-	*stack_b = (*stack_b)->next;
-	last = *stack_b;
-	while (last->next)
-		last = last->next;
-	last->next = temp;
-	temp->next = NULL;
-	if (print)
+	if (print == 2)
 		ft_printf("rb\n");
 }
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
-	ra(stack_a, 0);
-	ra(stack_b, 0);
+	rab(stack_a, 0);
+	rab(stack_b, 0);
 	ft_printf("rr\n");
 }
 
-void	rra(t_stack **stack_a, int print)
+void	rrab(t_stack **stack_a, int print)
 {
 	t_stack	*head;
 	t_stack	*last;
@@ -69,24 +53,15 @@ void	rra(t_stack **stack_a, int print)
 	last->next = NULL;
 	head->next = *stack_a;
 	*stack_a = head;
-	if (print)
+	if (print == 1)
 		ft_printf("rra\n");
+	if (print == 2)
+		ft_printf("rrb\n");
 }
 
-void	rrb(t_stack **stack_b, int print)
+void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*head;
-	t_stack	*last;
-
-	if (size_stack(*stack_b) < 2)
-		return ;
-	last = *stack_b;
-	while (last->next->next)
-		last = last->next;
-	head = last->next;
-	last->next = NULL;
-	head->next = *stack_b;
-	*stack_b = head;
-	if (print)
-		ft_printf("rrb\n");
+	rrab(stack_a, 0);
+	rrab(stack_b, 0);
+	ft_printf("rrr\n");
 }

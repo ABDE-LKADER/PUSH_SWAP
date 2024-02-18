@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:19 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/19 17:27:24 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:13:22 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_double(t_stack *stack)
 		temp = stack->next;
 		while (temp)
 		{
-			if (stack->value == temp->value)
+			if (stack->num == temp->num)
 				message_error();
 			temp = temp->next;
 		}
@@ -44,7 +44,7 @@ int	check_is_sorted(t_stack *stack)
 		check = stack->next;
 		while (check)
 		{
-			if (stack->value > check->value)
+			if (stack->num > check->num)
 				return (0);
 			check = check->next;
 		}

@@ -6,15 +6,15 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:07 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/18 21:35:33 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:13:21 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	size_stack(t_stack *stack)
+int	size_stack(t_stack *stack)
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
 	while (stack)
@@ -35,7 +35,7 @@ void	add_num(t_stack **stack, char *value)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return ;
-	new->value = ft_atol(value);
+	new->num = ft_atol(value);
 	new->next = NULL;
 	if (!(*stack))
 	{

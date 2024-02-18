@@ -6,76 +6,64 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/14 20:34:14 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:19:54 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_less(t_stack **stack_a)
+static void	sort_less(t_stack **stack_a)
 {
 	int	one;
 	int	tow;
 	int	three;
 
-	one = (*stack_a)->value;
-	tow = (*stack_a)->next->value;
-	three = (*stack_a)->next->next->value;
+	one = (*stack_a)->num;
+	tow = (*stack_a)->next->num;
+	three = (*stack_a)->next->next->num;
 	if (one > tow && tow > three)
 	{
-		sa(stack_a, 1);
-		rra(stack_a, 1);
+		sab(stack_a, 1);
+		rrab(stack_a, 1);
 	}
 	else if (one < three && three < tow)
 	{
-		sa(stack_a, 1);
-		ra(stack_a, 1);
+		sab(stack_a, 1);
+		rab(stack_a, 1);
 	}
 	else if (one > three && three > tow)
-		ra(stack_a, 1);
+		rab(stack_a, 1);
 	else if (one < three && three > tow)
-		sa(stack_a, 1);
+		sab(stack_a, 1);
 	else if (one > three && three < tow)
-		rra(stack_a, 1);
+		rrab(stack_a, 1);
 }
 
-void	sort_more(t_stack **stack_a, t_stack **stack_b)
+static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	int	index;
-	int lowest;
-
-	lowest = lowest_value(*stack_a);
-	index = get_position(*stack_a, lowest);
-	if ((*stack_a)->value == lowest)
-		pb(stack_a, stack_b);
-	else if ((*stack_a)->next->value == lowest)
-		sa(stack_a, 1);
-	else if (!index)
-		ra(stack_a, 1);
-	else if (index)
-		rra(stack_a, 1);
-}
-
-void	sort_stack(t_stack **stack_a, t_stack **stack_b)
-{
-	int	len;
-
 	if (size_stack(*stack_a) == 2)
 	{
-		sa(stack_a, 1);
+		sab(stack_a, 1);
 		return ;
 	}
 	while (!check_is_sorted(*stack_a))
 	{
-		len = size_stack(*stack_a);
-		if (len == 3)
+		if (size_stack(*stack_a) == 3)
 		{
 			sort_less(stack_a);
 			break ;
 		}
-		sort_more(stack_a, stack_b);
+		pab(stack_b, stack_a, 2);
 	}
-	sort_back(stack_a, stack_b);
+	while (*stack_b)
+		best_move(stack_a, stack_b);
+	while ((*stack_a)->num != lowest_value(*stack_a))
+	{
+			if (!get_position(*stack_a, lowest_value(*stack_a)))
+				rab(stack_a, 1);
+			else
+				rrab(stack_a, 1);
+	}
 }
 
 int	main(int ac, char **av)

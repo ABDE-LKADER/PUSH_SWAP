@@ -6,56 +6,41 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:22 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/13 22:19:43 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:13:21 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+int	last_value(t_stack *stack)
 {
-	rra(stack_a, 0);
-	rrb(stack_b, 0);
-	ft_printf("rrr\n");
-}
-
-void	sort_back(t_stack **stack_a, t_stack **stack_b)
-{
-	if (!size_stack(*stack_b))
-		return ;
-	while (*stack_b)
-		pa(stack_a, stack_b);
-}
-
-int	last_value(t_stack *stack_a)
-{
-	while (stack_a->next)
-		stack_a = stack_a->next;
-	return (stack_a->value);
+	while (stack->next)
+		stack = stack->next;
+	return (stack->num);
 }
 
 int	lowest_value(t_stack *stack)
 {
 	int lowest;
 
-	lowest = stack->value;
+	lowest = stack->num;
 	while (stack)
 	{
-		if (stack->value < lowest)
-			lowest = stack->value;
+		if (stack->num < lowest)
+			lowest = stack->num;
 		stack = stack->next;
 	}
 	return (lowest);
 }
 
-int	get_position(t_stack *stack, int lowest)
+int	get_position(t_stack *stack, int find)
 {
-	size_t	index;
+	int	index;
 
 	index = 0;
 	while (index <= size_stack(stack) / 2)
 	{
-		if (stack->value == lowest)
+		if (stack->num == find)
 			return (0);
 		stack = stack->next;
 		index++;
