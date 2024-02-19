@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:10:26 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/18 23:11:33 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:32:48 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	best_val(t_stack *stack_a, t_stack *stack_b)
 		moves = get_moves(stack_a, stack_b);
 		moves += index * !get_position(stack_a, stack_b->num)
 			+ (size - index) * get_position(stack_a, stack_b->num);
-		if (moves <= bestMove)
+		if (moves < bestMove)
 		{
 			bestMove = moves;
 			bestVal = stack_b->num;
@@ -89,11 +89,11 @@ void	best_move(t_stack **stack_a, t_stack **stack_b)
 	top = set_top(*stack_a, bestVal);
 	while ((*stack_a)->num != top || (*stack_b)->num != bestVal)
 	{
-		if ((*stack_a)->num != top && (*stack_b)->num != bestVal
-			&& !get_position(*stack_a, top) && !get_position(*stack_b, bestVal))
+		if ((*stack_b)->num != bestVal && !get_position(*stack_b, bestVal)
+				&& (*stack_a)->num != top && !get_position(*stack_a, top))
 			rr(stack_a, stack_b);
-		else if ((*stack_a)->num != top && (*stack_b)->num != bestVal
-			&& get_position(*stack_a, top) && get_position(*stack_b, bestVal))
+		else if ((*stack_b)->num != bestVal && get_position(*stack_b, bestVal)
+				&& (*stack_a)->num != top && get_position(*stack_a, top))
 			rrr(stack_a, stack_b);
 		else if ((*stack_b)->num != bestVal && !get_position(*stack_b, bestVal))
 			rab(stack_b, 2);
