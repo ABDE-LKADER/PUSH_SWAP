@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:22 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/19 13:30:20 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/20 19:03:35 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_position(t_stack *stack, int find)
 	int	index;
 
 	index = 0;
-	while (index < size_stack(stack) / 2)
+	while (index <= size_stack(stack) / 2)
 	{
 		if (stack->num == find)
 			return (0);

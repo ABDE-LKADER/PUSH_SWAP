@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:52 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/18 22:53:57 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:39:04 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 	ft_printf("rr\n");
 }
 
-void	rrab(t_stack **stack_a, int print)
+void	rrab(t_stack **stack, int print)
 {
 	t_stack	*head;
 	t_stack	*last;
 
-	if (size_stack(*stack_a) < 2)
+	if (size_stack(*stack) < 2)
 		return ;
-	last = *stack_a;
+	last = *stack;
 	while (last->next->next)
 		last = last->next;
 	head = last->next;
 	last->next = NULL;
-	head->next = *stack_a;
-	*stack_a = head;
+	head->next = *stack;
+	*stack = head;
 	if (print == 1)
 		ft_printf("rra\n");
 	if (print == 2)

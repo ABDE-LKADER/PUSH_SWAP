@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:34 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/18 15:42:49 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:38:39 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	pab(t_stack **stack_from, t_stack **stack_to, int print);
 
 void	rab(t_stack **stack, int print);
 void	rr(t_stack **stack_a, t_stack **stack_b);
-void	rrab(t_stack **stack_a, int print);
+void	rrab(t_stack **stack, int print);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 
 #endif
