@@ -6,7 +6,7 @@
 #    By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 17:23:22 by abadouab          #+#    #+#              #
-#    Updated: 2024/02/22 10:37:51 by abadouab         ###   ########.fr        #
+#    Updated: 2024/02/22 10:44:26 by abadouab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJS_BONUS 	=	$(SRCS_BONUS:.c=.o)
 HEADER		=	mandatory/push_swap.h
 HD_BONUS	=	bonus/push_swap_bonus.h
 
-MYHD		=	MYLIB/mylib.a
+MYAR		=	MYLIB/libar.a
 MYLB		=	MYLIB
 
 FLGS 		=	cc -Wall -Wextra -Werror
@@ -59,10 +59,10 @@ $(NAME): $(OBJS)
 $(NAME_BONUS): $(OBJS_BONUS)
 	@$(FLGS) $^ -L $(MYLB) -l ar -o $(NAME_BONUS)
 
-$(OBJS): %.o: %.c $(MYHD) $(HEADER)
+$(OBJS): %.o: %.c $(MYAR) $(HEADER)
 	@$(FLGS) -c -I $(MYLB) $< -o $@
 
-$(OBJS_BONUS): %.o: %.c $(MYHD) $(HD_BONUS)
+$(OBJS_BONUS): %.o: %.c $(MYAR) $(HD_BONUS)
 	@$(FLGS) -c -I $(MYLB) $< -o $@
 
 clean:
