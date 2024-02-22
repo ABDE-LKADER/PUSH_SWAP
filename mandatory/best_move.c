@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:10:26 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/20 22:23:10 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:38:46 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	set_top(t_stack *stack, int num)
 	return (min);
 }
 
-static int	get_moves(t_stack *stack_a, int num, int index)
+static int	get_moves(t_stack *stack_a, int num)
 {
 	int		top;
 	int		moves;
@@ -43,7 +43,6 @@ static int	get_moves(t_stack *stack_a, int num, int index)
 	moves = 0;
 	loop = stack_a;
 	top = set_top(stack_a, num);
-	// ft_printf("\t\t\t\t\tTOP: %d\n", top);
 	while (loop->num != top)
 	{
 		moves++;
@@ -51,11 +50,6 @@ static int	get_moves(t_stack *stack_a, int num, int index)
 	}
 	if (get_position(stack_a, top))
 		moves = size_stack(stack_a) - moves;
-	while (moves && index)
-	{
-		moves--;
-		index--;
-	}
 	return (moves);
 }
 
@@ -72,26 +66,14 @@ static int	best_val(t_stack *stack_a, t_stack *stack_b, t_stack *head_b)
 	bestMove = size_stack(stack_a) + size_stack(stack_b);
 	while (stack_b)
 	{
-		if (!get_position(head_b, stack_b->num))
-			moves = get_moves(stack_a, stack_b->num, index);
-		else if (get_position(head_b, stack_b->num))
-			moves = get_moves(stack_a, stack_b->num, (size - index));
-		// ft_printf("\t\t\t\t\tNUMBER: %d\n", stack_b->num);
-		// ft_printf("MOVES IN STACK A: %d\n", moves);
-		// if (!get_position(stack_b, head_b->num))
-		// 	moves += index;
-		// else if (get_position(stack_b, head_b->num))
-		// 	moves += (size - index);
+		moves = get_moves(stack_a, stack_b->num);
 		moves += index * !get_position(head_b, stack_b->num)
 			+ (size - index) * get_position(head_b, stack_b->num);
-		// ft_printf("INDEX IN STACK B: %d\n", index);
-		// ft_printf("TOTAL MOVES: %d\n", moves);
 		if (moves < bestMove)
 		{
 			bestMove = moves;
 			bestVal = stack_b->num;
 		}
-		// ft_printf("BEST VAL: %d\n", bestVal);
 		stack_b = stack_b->next;
 		index++;
 	}
@@ -105,22 +87,6 @@ void	best_move(t_stack **stack_a, t_stack **stack_b)
 
 	bestVal = best_val(*stack_a, *stack_b, *stack_b);
 	top = set_top(*stack_a, bestVal);
-	// t_stack *loop_a = *stack_a;
-	// t_stack *loop_b = *stack_b;
-	// ft_printf("STACK A:");
-	// while (loop_a)
-	// {
-	// 	ft_printf(" %d |-| ", loop_a->num);
-	// 	loop_a = loop_a->next;
-	// }
-	// ft_printf("\n");
-	// ft_printf("STACK B:");
-	// while (loop_b)
-	// {
-	// 	ft_printf(" %d |-| ", loop_b->num);
-	// 	loop_b = loop_b->next;
-	// }
-	// ft_printf("\n");
 	while ((*stack_a)->num != top || (*stack_b)->num != bestVal)
 	{
 		if ((*stack_b)->num != bestVal && !get_position(*stack_b, bestVal)

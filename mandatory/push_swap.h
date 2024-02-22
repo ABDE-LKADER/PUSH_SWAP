@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:34 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/20 18:38:39 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:31:38 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@
 # include "mylib.h"
 # include <stdio.h>
 # include <limits.h>
+# include <stdbool.h>
 
 typedef struct s_stack
 {
 	int				num;
+	bool			sub;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -32,6 +34,8 @@ int		check_is_sorted(t_stack *stack);
 int		size_stack(t_stack *stack);
 t_stack	*parce_in(int ac, char **av);
 void	add_num(t_stack **stack, char *value);
+
+void longest_in_sub(t_stack **stack_a, t_stack **stack_b);
 
 void	free_stack(t_stack *stack);
 int		last_value(t_stack *stack_a);

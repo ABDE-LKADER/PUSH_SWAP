@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/19 13:30:31 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:19:23 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,20 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		sab(stack_a, 1);
 		return ;
 	}
-	while (!check_is_sorted(*stack_a))
+	if (size_stack(*stack_a) == 3)
 	{
-		if (size_stack(*stack_a) == 3)
-		{
-			sort_less(stack_a);
-			break ;
-		}
-		pab(stack_b, stack_a, 2);
+		sort_less(stack_a);
+		return ;
 	}
+	longest_in_sub(stack_a, stack_b);
 	while (*stack_b)
 		best_move(stack_a, stack_b);
 	while ((*stack_a)->num != lowest_value(*stack_a))
 	{
-			if (!get_position(*stack_a, lowest_value(*stack_a)))
-				rab(stack_a, 1);
-			else
-				rrab(stack_a, 1);
+		if (!get_position(*stack_a, lowest_value(*stack_a)))
+			rab(stack_a, 1);
+		else
+			rrab(stack_a, 1);
 	}
 }
 
@@ -79,5 +76,7 @@ int	main(int ac, char **av)
 	if (check_is_sorted(stack_a))
 		return (EXIT_SUCCESS);
 	sort_stack(&stack_a, &stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (EXIT_SUCCESS);
 }

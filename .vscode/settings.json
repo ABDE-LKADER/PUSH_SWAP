@@ -12,6 +12,12 @@
         "string_view": "c",
         "unordered_map": "c",
         "utility": "c",
-        "vector": "c"
+        "vector": "c",
+        "push_swap.h": "c",
+        "mylib.h": "c",
+        "limits": "c",
+        "memory": "c",
+        "__bit_reference": "c",
+        "algorithm": "c"
     }
 }

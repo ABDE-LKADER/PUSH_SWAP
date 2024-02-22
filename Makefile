@@ -6,7 +6,7 @@
 #    By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 17:23:22 by abadouab          #+#    #+#              #
-#    Updated: 2024/02/18 15:42:31 by abadouab         ###   ########.fr        #
+#    Updated: 2024/02/22 10:37:51 by abadouab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@ SRCS		=	mandatory/parse_in.c \
 				mandatory/push_swap.c \
 				mandatory/best_move.c  \
 				mandatory/sort_tools.c  \
-				mandatory/actions_sp.c   \
-				mandatory/actions_ro.c    \
-				mandatory/check_errors.c   \
+				mandatory/lon_in_sub.c   \
+				mandatory/actions_sp.c    \
+				mandatory/actions_ro.c     \
+				mandatory/check_errors.c    \
 
 NAME_BONUS	=	checker
 SRCS_BONUS	=	bonus/checker_bonus.c  \
@@ -32,7 +33,7 @@ OBJS_BONUS 	=	$(SRCS_BONUS:.c=.o)
 HEADER		=	mandatory/push_swap.h
 HD_BONUS	=	bonus/push_swap_bonus.h
 
-MYHD		=	MYLIB/mylib.h
+MYHD		=	MYLIB/mylib.a
 MYLB		=	MYLIB
 
 FLGS 		=	cc -Wall -Wextra -Werror
@@ -50,7 +51,7 @@ bonus: $(MYLB) $(NAME_BONUS)
 	@echo $(GREEN)Done !!$(RESET)
 
 $(MYLB):
-	@make -C MYLIB --no-print-directory
+	@make -C $(MYLB) --no-print-directory
 
 $(NAME): $(OBJS)
 	@$(FLGS) $^ -L $(MYLB) -l ar -o $(NAME)

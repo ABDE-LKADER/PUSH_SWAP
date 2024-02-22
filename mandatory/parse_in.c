@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:07 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/18 15:13:21 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:51:25 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@ int	size_stack(t_stack *stack)
 		len++;
 	}
 	return (len);
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*loop;
+
+	if (!stack)
+		return ;
+	while (stack)
+	{
+		loop = stack->next;
+		free(stack);
+		stack = loop;
+	}
 }
 
 void	add_num(t_stack **stack, char *value)
