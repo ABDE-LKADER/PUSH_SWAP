@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:34 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/24 18:38:12 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/24 22:44:33 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	free_stack(t_stack *stack);
 int		last_value(t_stack *stack_a);
 int		biggest_value(t_stack *stack);
 int		lowest_value(t_stack *stack_a);
+void	longest_in_sub(t_stack *stack);
 int		get_position(t_stack *stack, int find);
 void	best_move(t_stack **stack_a, t_stack **stack_b);
-void	longest_in_sub(t_stack **stack_a, t_stack **stack_b);
 
 void	sab(t_stack **stack, int print);
 void	ss(t_stack **stack_a, t_stack **stack_b);

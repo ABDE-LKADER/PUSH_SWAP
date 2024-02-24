@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:50:45 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/24 18:31:19 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/24 22:44:30 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_is_sub(t_stack *stack)
 
 static void set_longest(t_stack *stack)
 {
-	int	 index;
+	int		index;
 	t_stack *loop;
 	t_stack *first;
 	t_stack *second;
@@ -95,25 +95,17 @@ static void set_longest(t_stack *stack)
 	}
 }
 
-void longest_in_sub(t_stack **stack_a, t_stack **stack_b)
+void longest_in_sub(t_stack *stack)
 {
-	set_longest(*stack_a);
-	t_stack *temp_a = *stack_a;
-	ft_printf("\n---------> START\n");
-	while (temp_a)
-	{
-		ft_printf("NUMBER IS: %d\t\t", temp_a->num);
-		ft_printf("LIS IS: %d\t\t", temp_a->lis);
-		ft_printf("LEN IS: %d\n", temp_a->len);
-		temp_a = temp_a->next;
-	}
-	ft_printf("---------> END\n");
-	exit(0);
-	while (check_is_sub(*stack_a))
-	{
-		if (!(*stack_a)->sub)
-			pab(stack_b, stack_a, 2);
-		else
-			rab(stack_a, 1);
-	}
+	set_longest(stack);
+	// t_stack *temp_a = *stack_a;
+	// ft_printf("\n---------> START\n");
+	// while (temp_a)
+	// {
+	// 	ft_printf("NUMBER IS: %d\t\t", temp_a->num);
+	// 	ft_printf("LIS IS: %d\t\t", temp_a->lis);
+	// 	ft_printf("LEN IS: %d\n", temp_a->len);
+	// 	temp_a = temp_a->next;
+	// }
+	// ft_printf("---------> END\n");
 }
