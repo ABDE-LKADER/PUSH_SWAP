@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:22 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/22 18:45:16 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/24 20:32:02 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,28 @@ int	lowest_value(t_stack *stack)
 	return (lowest);
 }
 
+int	biggest_value(t_stack *stack)
+{
+	int biggest;
+
+	biggest = stack->num;
+	while (stack)
+	{
+		if (stack->num > biggest)
+			biggest = stack->num;
+		stack = stack->next;
+	}
+	return (biggest);
+}
+
 int	get_position(t_stack *stack, int find)
 {
+	int	size;
 	int	index;
 
 	index = 0;
-	while (index <= size_stack(stack) / 2)
+	size = size_stack(stack);
+	while (index <= size / 2)
 	{
 		if (stack->num == find)
 			return (0);

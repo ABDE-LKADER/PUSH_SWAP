@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:10:26 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/22 23:25:54 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:42:03 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,16 @@ static int	best_val(t_stack *stack_a, t_stack *stack_b, t_stack *head_b)
 
 	index = 0;
 	size = size_stack(stack_b);
-	bestMove = size_stack(stack_a) + size_stack(stack_b);
+	bestMove = size + size_stack(stack_a);
 	while (stack_b)
 	{
 		moves = get_moves(stack_a, stack_b->num);
-		moves += index * !get_position(head_b, stack_b->num)
-			+ (size - index) * get_position(head_b, stack_b->num);
+		if (get_position(head_b, stack_b->num))
+			moves += (size - index);
+		else
+			moves += index;
+		// moves += index * !get_position(head_b, stack_b->num)
+		// 	+ (size - index) * get_position(head_b, stack_b->num);
 		if (moves < bestMove)
 		{
 			bestMove = moves;

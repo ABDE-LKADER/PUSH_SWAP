@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:34 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/22 22:50:46 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/24 18:38:12 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@
 typedef struct s_stack
 {
 	int				num;
-	bool			sub;
+	int				len;
+	int				lis;
+	int				sub;
+	int				top;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -35,17 +38,17 @@ int		size_stack(t_stack *stack);
 t_stack	*parce_in(int ac, char **av);
 void	add_num(t_stack **stack, char *value);
 
-void longest_in_sub(t_stack **stack_a, t_stack **stack_b);
-
 void	free_stack(t_stack *stack);
 int		last_value(t_stack *stack_a);
+int		biggest_value(t_stack *stack);
 int		lowest_value(t_stack *stack_a);
 int		get_position(t_stack *stack, int find);
 void	best_move(t_stack **stack_a, t_stack **stack_b);
+void	longest_in_sub(t_stack **stack_a, t_stack **stack_b);
 
 void	sab(t_stack **stack, int print);
 void	ss(t_stack **stack_a, t_stack **stack_b);
-void	pab(t_stack **stack_from, t_stack **stack_to, int print);
+void	pab(t_stack **stack_to, t_stack **stack_from, int print);
 
 void	rab(t_stack **stack, int print);
 void	rr(t_stack **stack_a, t_stack **stack_b);
