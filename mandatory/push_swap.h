@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:34 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/24 22:44:33 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:39:53 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 typedef struct s_stack
 {
 	int				num;
-	int				len;
-	int				lis;
 	int				sub;
 	int				top;
 	struct s_stack	*next;
@@ -39,6 +37,7 @@ t_stack	*parce_in(int ac, char **av);
 void	add_num(t_stack **stack, char *value);
 
 void	free_stack(t_stack *stack);
+int		check_is_sub(t_stack *stack);
 int		last_value(t_stack *stack_a);
 int		biggest_value(t_stack *stack);
 int		lowest_value(t_stack *stack_a);

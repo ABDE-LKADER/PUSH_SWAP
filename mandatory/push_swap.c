@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/24 22:44:29 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/25 20:20:07 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,27 @@ static void	sort_less(t_stack **stack_a)
 
 static void	sort_quick(t_stack **stack_a, t_stack **stack_b)
 {
-	int		mid;
+	int		pivot;
 
+	longest_in_sub(*stack_a);
 	while (!check_is_sorted(*stack_a))
 	{
-		mid = (lowest_value(*stack_a) + biggest_value(*stack_a)) / 2;
+		if (check_is_sub(*stack_a))
+			break ;
+		if ((*stack_a)->sub)
+			ft_printf("------- %d\n", (*stack_a)->num);
+		pivot = (lowest_value(*stack_a) + biggest_value(*stack_a)) / 2;
+		if ((*stack_a)->sub)
+			rab(stack_a, 1);
 		if (!(*stack_a)->sub)
 			pab(stack_b, stack_a, 2);
-		else if ((*stack_a)->sub)
-			rab(stack_a, 1);
-		if ((*stack_b)->num < mid)
+		if ((*stack_b)->num < pivot)
 			rab(stack_b, 2);
 	}
 }
 
 static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-	// t_stack *temp_a = *stack_a;
 	if (size_stack(*stack_a) == 2)
 	{
 		sab(stack_a, 1);
@@ -68,7 +72,6 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		sort_less(stack_a);
 		return ;
 	}
-	longest_in_sub(*stack_a);
 	sort_quick(stack_a, stack_b);
 	while (*stack_b)
 		best_move(stack_a, stack_b);

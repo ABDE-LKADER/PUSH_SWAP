@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:50:45 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/24 22:44:30 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:37:57 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,95 +17,105 @@ int	check_is_sub(t_stack *stack)
 	while (stack)
 	{
 		if (!stack->sub)
-			return (1);
+			return (0);
 		stack = stack->next;
 	}
-	return (0);
+	return (1);
 }
 
-// static int get_longest(t_stack *stack, int num)
-// {
-// 	int		count;
-// 	t_stack *first;
-// 	t_stack *second;
-
-	
-// 	count = 0;
-// 	first = stack;
-// 	second = stack->next;
-// 	while (second)
-// 	{
-// 		if (num < first->num && first->num < second->num)
-// 			count++;
-// 		first = first->next;
-// 		second = second->next;
-// 	}
-// 	return (count);
-// }
-
-// static void set_longest_sub(t_stack *longest)
-// {
-// 	t_stack *first;
-// 	t_stack *second;
-
-// 	first = longest;
-// 	second = longest->next;
-// 	while (second)
-// 	{   
-// 		if (longest->num < first->num && first->num < second->num)
-// 			second->sub = 1;
-// 		first = first->next;
-// 		second = second->next;
-// 	}
-// }
-
-// static void set_longest(t_stack *stack)
-
-static void set_longest(t_stack *stack)
+void	set_in_sub(t_stack *stack, int num)
 {
-	int		index;
-	t_stack *loop;
-	t_stack *first;
-	t_stack *second;
-
-	loop = stack;
-	while (loop)
+	while (stack)
 	{
-		loop->len = 1;
-		loop->lis = -1;
-		loop = loop->next;
+		if (stack->num == num)
+		{
+			stack->sub = 1;
+			return ;
+		}
+		stack = stack->next;
 	}
-	first = stack;
-	second = stack->next;
-	while (second)
+}
+
+static int **set_longest(int **lis)
+{
+	int		num;
+	int		len;
+	int		seq;
+	int 	first;
+	int 	second;
+
+	(1) && (num = 0, len = 1, seq = 2, first = 0, second = 1);
+	while (lis[num][second])
 	{
-		index = 0;
-		first = stack;
+		first = 0;
 		while (first != second)
 		{
-			if (first->num < second->num && (first->len + 1) >= second->len)
+			if (lis[num][first] < lis[num][second] && \
+				(lis[len][first] + 1) >= lis[len][second])
 			{
-				second->len = first->len + 1;
-				second->lis = index;	
+				lis[len][second] = lis[len][first] + 1;
+				lis[seq][second] = first;
 			}
-			first = first->next;
-			index++;
+			first++;
 		}
-		second = second->next;
+		second++;
 	}
+	return (lis);
+}
+
+static int	**get_longest(t_stack *stack)
+{
+	int		size;
+	int		index;
+	int		**lis;
+
+	(1) && (size = size_stack(stack), lis = malloc(3 * sizeof(char **)),
+		lis[0] = malloc(size * sizeof(char *)),
+		lis[1] = malloc(size * sizeof(char *)),
+		lis[2] = malloc(size * sizeof(char *)),
+		index = 0);
+	while (stack)
+	{
+		stack->top = 0;
+		stack->sub = 0;
+		lis[0][index] = stack->num;
+		lis[1][index] = 1;
+		lis[2][index] = -1;
+		stack = stack->next;
+		index++;
+	}
+	lis = set_longest(lis);
+	return (lis);
 }
 
 void longest_in_sub(t_stack *stack)
 {
-	set_longest(stack);
-	// t_stack *temp_a = *stack_a;
-	// ft_printf("\n---------> START\n");
-	// while (temp_a)
-	// {
-	// 	ft_printf("NUMBER IS: %d\t\t", temp_a->num);
-	// 	ft_printf("LIS IS: %d\t\t", temp_a->lis);
-	// 	ft_printf("LEN IS: %d\n", temp_a->len);
-	// 	temp_a = temp_a->next;
-	// }
-	// ft_printf("---------> END\n");
+	int		size;
+	int		**lis;
+	int		start;
+	int		index;
+	int		longest;
+
+	lis = get_longest(stack);
+	(1) && (index = 1, longest = lis[1][0], size = size_stack(stack));
+	while (size)
+	{
+		if (lis[1][index] > longest)
+		{
+			start = index;
+			longest = lis[1][index];
+		}
+		index++;
+		size--;
+	}
+	set_in_sub(stack, lis[0][start]);
+	while (lis[2][longest] != -1)
+	{
+		set_in_sub(stack, lis[0][longest]);
+			ft_printf("L: ------- %d\n", longest);
+			ft_printf("I: ------- %d\n", lis[2][longest]);
+			ft_printf("N: ------- %d\n", lis[0][longest]);
+		longest = lis[2][longest];
+	}
+	set_in_sub(stack, lis[0][longest]);
 }
