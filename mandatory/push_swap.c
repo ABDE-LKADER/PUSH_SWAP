@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/25 20:20:07 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/25 22:39:51 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ static void	sort_quick(t_stack **stack_a, t_stack **stack_b)
 	{
 		if (check_is_sub(*stack_a))
 			break ;
-		if ((*stack_a)->sub)
-			ft_printf("------- %d\n", (*stack_a)->num);
 		pivot = (lowest_value(*stack_a) + biggest_value(*stack_a)) / 2;
 		if ((*stack_a)->sub)
 			rab(stack_a, 1);

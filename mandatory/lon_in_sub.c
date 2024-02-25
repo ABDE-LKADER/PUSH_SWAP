@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:50:45 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/25 18:37:57 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/25 23:07:53 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	set_in_sub(t_stack *stack, int num)
 	}
 }
 
-static int **set_longest(int **lis)
+static int **set_longest(int **lis, int	size)
 {
 	int		num;
 	int		len;
@@ -44,8 +44,8 @@ static int **set_longest(int **lis)
 	int 	first;
 	int 	second;
 
-	(1) && (num = 0, len = 1, seq = 2, first = 0, second = 1);
-	while (lis[num][second])
+	(1) && (num = 0, len = 1, seq = 2, second = 1);
+	while (size--)
 	{
 		first = 0;
 		while (first != second)
@@ -84,7 +84,7 @@ static int	**get_longest(t_stack *stack)
 		stack = stack->next;
 		index++;
 	}
-	lis = set_longest(lis);
+	lis = set_longest(lis, size);
 	return (lis);
 }
 
@@ -98,24 +98,54 @@ void longest_in_sub(t_stack *stack)
 
 	lis = get_longest(stack);
 	(1) && (index = 1, longest = lis[1][0], size = size_stack(stack));
-	while (size)
+	index = 0;
+	int	s = size;
+	int	s1 = size;
+	int	s2 = size;
+	ft_printf("NUMBERS >\n");
+	while (s--)
+	{
+		ft_printf("--------> %d \t", lis[0][index]);
+		index++;
+	}
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("LEN >\n");
+	index = 0;
+	while (s1--)
+	{
+		ft_printf("--------> %d \t", lis[1][index]);
+		index++;
+	}
+	ft_printf("\n");
+	ft_printf("\n");
+	ft_printf("SEQ >\n");
+	index = 0;
+	while (s2--)
+	{
+		ft_printf("--------> %d \t", lis[2][index]);
+		index++;
+	}
+	ft_printf("\n");
+	ft_printf("\n\n\t\t\t\tSIZE %d \n\n", size);
+	index = 0;
+	longest = 0;
+	while (size--)
 	{
 		if (lis[1][index] > longest)
-		{
-			start = index;
-			longest = lis[1][index];
-		}
+			longest = index;
 		index++;
-		size--;
 	}
-	set_in_sub(stack, lis[0][start]);
+	// ft_printf("\n>>>>>>>>>>>>>>>>>>>>>>>>> %d\n", lis[0][longest]);
+	ft_printf("\n\n\t\t\t\tLONGEST %d \n\n", index);
+	start = 0;
+	// set_in_sub(stack, lis[0][start]);
 	while (lis[2][longest] != -1)
 	{
 		set_in_sub(stack, lis[0][longest]);
-			ft_printf("L: ------- %d\n", longest);
-			ft_printf("I: ------- %d\n", lis[2][longest]);
-			ft_printf("N: ------- %d\n", lis[0][longest]);
+		ft_printf("\n>>>>>>>>>>>>>>>>>>>>>>>>> %d\n", lis[0][longest]);
 		longest = lis[2][longest];
 	}
 	set_in_sub(stack, lis[0][longest]);
+	ft_printf("\n>>>>>>>>>>>>>>>>>>>>>>>>> %d\n", lis[0][longest]);
 }
