@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:52 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/22 10:31:20 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:10:42 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	rab(t_stack **stack, int print)
 {
-	t_stack	*temp; 
+	t_stack	*temp;
 	t_stack	*last;
 
 	if (size_stack(*stack) < 2)

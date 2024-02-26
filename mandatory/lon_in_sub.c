@@ -6,11 +6,11 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:50:45 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/25 23:07:53 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:59:56 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 int	check_is_sub(t_stack *stack)
 {
@@ -36,13 +36,13 @@ void	set_in_sub(t_stack *stack, int num)
 	}
 }
 
-static int **set_longest(int **lis, int	size)
+static int	**set_longest(int **lis, int size)
 {
 	int		num;
 	int		len;
 	int		seq;
-	int 	first;
-	int 	second;
+	int		first;
+	int		second;
 
 	(1) && (num = 0, len = 1, seq = 2, second = 1);
 	while (size--)
@@ -63,17 +63,15 @@ static int **set_longest(int **lis, int	size)
 	return (lis);
 }
 
-static int	**get_longest(t_stack *stack)
+static int	**get_longest(t_stack *stack, int size)
 {
-	int		size;
 	int		index;
 	int		**lis;
 
-	(1) && (size = size_stack(stack), lis = malloc(3 * sizeof(char **)),
+	(1) && (index = 0, lis = malloc(3 * sizeof(char **)),
 		lis[0] = malloc(size * sizeof(char *)),
 		lis[1] = malloc(size * sizeof(char *)),
-		lis[2] = malloc(size * sizeof(char *)),
-		index = 0);
+		lis[2] = malloc(size * sizeof(char *)));
 	while (stack)
 	{
 		stack->top = 0;
@@ -84,68 +82,41 @@ static int	**get_longest(t_stack *stack)
 		stack = stack->next;
 		index++;
 	}
-	lis = set_longest(lis, size);
-	return (lis);
+	return (lis = set_longest(lis, size), lis);
 }
 
-void longest_in_sub(t_stack *stack)
+void	longest_in_sub(t_stack *stack, int size)
 {
-	int		size;
 	int		**lis;
-	int		start;
+	int		check;
 	int		index;
 	int		longest;
 
-	lis = get_longest(stack);
-	(1) && (index = 1, longest = lis[1][0], size = size_stack(stack));
-	index = 0;
-	int	s = size;
-	int	s1 = size;
-	int	s2 = size;
-	ft_printf("NUMBERS >\n");
-	while (s--)
-	{
-		ft_printf("--------> %d \t", lis[0][index]);
-		index++;
-	}
-	ft_printf("\n");
-	ft_printf("\n");
-	ft_printf("LEN >\n");
-	index = 0;
-	while (s1--)
-	{
-		ft_printf("--------> %d \t", lis[1][index]);
-		index++;
-	}
-	ft_printf("\n");
-	ft_printf("\n");
-	ft_printf("SEQ >\n");
-	index = 0;
-	while (s2--)
-	{
-		ft_printf("--------> %d \t", lis[2][index]);
-		index++;
-	}
-	ft_printf("\n");
-	ft_printf("\n\n\t\t\t\tSIZE %d \n\n", size);
-	index = 0;
-	longest = 0;
+	(1) && (index = 0, check = 0, lis = get_longest(stack, size));
 	while (size--)
 	{
-		if (lis[1][index] > longest)
+		if (lis[1][index] > check)
+		{
 			longest = index;
+			check = lis[1][index];
+		}
 		index++;
 	}
-	// ft_printf("\n>>>>>>>>>>>>>>>>>>>>>>>>> %d\n", lis[0][longest]);
-	ft_printf("\n\n\t\t\t\tLONGEST %d \n\n", index);
-	start = 0;
-	// set_in_sub(stack, lis[0][start]);
 	while (lis[2][longest] != -1)
 	{
 		set_in_sub(stack, lis[0][longest]);
-		ft_printf("\n>>>>>>>>>>>>>>>>>>>>>>>>> %d\n", lis[0][longest]);
 		longest = lis[2][longest];
 	}
-	set_in_sub(stack, lis[0][longest]);
-	ft_printf("\n>>>>>>>>>>>>>>>>>>>>>>>>> %d\n", lis[0][longest]);
+	index = 3;
+	while (--index >= 0)
+		free(lis[index]);
+	free(lis);
+	index = 0;
+	size = sizeof(lis[0] / sizeof(lis[0][0]));
+	ft_printf("------> %d\t", size);
+	while (size--)
+	{
+		ft_printf("------> %d\t", lis[0][index]);
+		index++;
+	}
 }

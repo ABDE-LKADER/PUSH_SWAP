@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 15:10:26 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/24 16:42:03 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:12:17 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 static int	set_top(t_stack *stack, int num)
 {
-	int	min;
-	int	last;
-	int	fisrt;
-	int	second;
+	int		min;
+	int		last;
+	int		fisrt;
+	int		second;
 
-	last = last_value(stack);
-	min = lowest_value(stack);
+	(1) && (last = last_value(stack), min = lowest_value(stack));
 	while (stack->next)
 	{
 		fisrt = stack->num;
@@ -29,7 +28,7 @@ static int	set_top(t_stack *stack, int num)
 			return (second);
 		if (num < fisrt && num > last)
 			return (fisrt);
-		stack= stack->next;
+		stack = stack->next;
 	}
 	return (min);
 }
@@ -40,9 +39,7 @@ static int	get_moves(t_stack *stack_a, int num)
 	int		moves;
 	t_stack	*loop;
 
-	moves = 0;
-	loop = stack_a;
-	top = set_top(stack_a, num);
+	(1) && (moves = 0, loop = stack_a, top = set_top(stack_a, num));
 	while (loop->num != top)
 	{
 		moves++;
@@ -58,12 +55,11 @@ static int	best_val(t_stack *stack_a, t_stack *stack_b, t_stack *head_b)
 	int		size;
 	int		moves;
 	int		index;
-	int		bestVal;
-	int		bestMove;
+	int		bestval;
+	int		bestmove;
 
-	index = 0;
-	size = size_stack(stack_b);
-	bestMove = size + size_stack(stack_a);
+	(1) && (index = 0, size = size_stack(stack_b),
+		bestmove = size + size_stack(stack_a));
 	while (stack_b)
 	{
 		moves = get_moves(stack_a, stack_b->num);
@@ -71,37 +67,35 @@ static int	best_val(t_stack *stack_a, t_stack *stack_b, t_stack *head_b)
 			moves += (size - index);
 		else
 			moves += index;
-		// moves += index * !get_position(head_b, stack_b->num)
-		// 	+ (size - index) * get_position(head_b, stack_b->num);
-		if (moves < bestMove)
+		if (moves < bestmove)
 		{
-			bestMove = moves;
-			bestVal = stack_b->num;
+			bestmove = moves;
+			bestval = stack_b->num;
 		}
 		stack_b = stack_b->next;
 		index++;
 	}
-	return (bestVal);
+	return (bestval);
 }
 
 void	best_move(t_stack **stack_a, t_stack **stack_b)
 {
-	int	top;
-	int	bestVal;
+	int		top;
+	int		bestval;
 
-	bestVal = best_val(*stack_a, *stack_b, *stack_b);
-	top = set_top(*stack_a, bestVal);
-	while ((*stack_a)->num != top || (*stack_b)->num != bestVal)
+	bestval = best_val(*stack_a, *stack_b, *stack_b);
+	top = set_top(*stack_a, bestval);
+	while ((*stack_a)->num != top || (*stack_b)->num != bestval)
 	{
-		if ((*stack_b)->num != bestVal && !get_position(*stack_b, bestVal)
-				&& (*stack_a)->num != top && !get_position(*stack_a, top))
+		if ((*stack_b)->num != bestval && !get_position(*stack_b, bestval)
+			&& (*stack_a)->num != top && !get_position(*stack_a, top))
 			rr(stack_a, stack_b);
-		else if ((*stack_b)->num != bestVal && get_position(*stack_b, bestVal)
-				&& (*stack_a)->num != top && get_position(*stack_a, top))
+		else if ((*stack_b)->num != bestval && get_position(*stack_b, bestval)
+			&& (*stack_a)->num != top && get_position(*stack_a, top))
 			rrr(stack_a, stack_b);
-		else if ((*stack_b)->num != bestVal && !get_position(*stack_b, bestVal))
+		else if ((*stack_b)->num != bestval && !get_position(*stack_b, bestval))
 			rab(stack_b, 2);
-		else if ((*stack_b)->num != bestVal && get_position(*stack_b, bestVal))
+		else if ((*stack_b)->num != bestval && get_position(*stack_b, bestval))
 			rrab(stack_b, 2);
 		else if ((*stack_a)->num != top && !get_position(*stack_a, top))
 			rab(stack_a, 1);

@@ -6,13 +6,14 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/01/19 17:27:23 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:54:31 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-static void	check_actions(t_stack **stack_a, t_stack **stack_b,  t_list	*ops, char *input)
+static void	check_actions(t_stack **stack_a, t_stack **stack_b,
+	t_list *ops, char *input)
 {
 	int	len;
 
