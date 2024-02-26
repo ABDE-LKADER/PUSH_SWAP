@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/26 13:27:43 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:34:48 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ static void	sort_quick(t_stack **stack_a, t_stack **stack_b, int size)
 	{
 		if (check_is_sub(*stack_a))
 			break ;
-		if (size == 5)
-		{
-			pab(stack_b, stack_a, 2);
-			pab(stack_b, stack_a, 2);
-			break ;
-		}
+		// if (size == 5)
+		// {
+		// 	pab(stack_b, stack_a, 2);
+		// 	pab(stack_b, stack_a, 2);
+		// 	break ;
+		// }
 		pivot = (lowest_value(*stack_a) + biggest_value(*stack_a)) / 2;
 		if ((*stack_a)->sub)
 			rab(stack_a, 1);
@@ -91,7 +91,7 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-void fun(){system("leaks push_swap");}
+// void fun(){system("leaks push_swap");}
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
@@ -105,9 +105,8 @@ int	main(int ac, char **av)
 	if (check_is_sorted(stack_a))
 		return (EXIT_SUCCESS);
 	sort_stack(&stack_a, &stack_b);
-	(void)sort_stack;
 	free_stack(stack_a);
 	free_stack(stack_b);
-	atexit(fun);
+	// atexit(fun);
 	return (EXIT_SUCCESS);
 }
