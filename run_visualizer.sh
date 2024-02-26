@@ -5653,7 +5653,6 @@ printf	"${GREEN}\nOK${WHITE} TESTS $res_1/$cont\n"
 printf	"${RED}\nKO${WHITE} TESTS $res_2/$cont\n"
 printf "${CYAN}\nCheck traces $PWD/traces.txt\n"
 fi
-
 fi
 
 rm -rf 0
