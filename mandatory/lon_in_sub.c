@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:50:45 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/26 13:25:26 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:27:51 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,12 @@ void	longest_in_sub(t_stack *stack, int size)
 	while (--index >= 0)
 		free(lis[index]);
 	free(lis);
-	index = 0;
-	size = sizeof(lis[0] / sizeof(lis[0][0]));
-	ft_printf("------> %d\t", size);
-	while (size--)
-	{
-		ft_printf("------> %d\t", lis[0][index]);
-		index++;
-	}
+	// index = 0;
+	// size = sizeof(lis[0] / sizeof(lis[0][0]));
+	// ft_printf("------> %d\t", size);
+	// while (size--)
+	// {
+	// 	ft_printf("------> %d\t", lis[0][index]);
+	// 	index++;
+	// }
 }

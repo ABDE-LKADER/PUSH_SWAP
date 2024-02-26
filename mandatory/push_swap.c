@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/26 13:25:24 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:27:43 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 			rrab(stack_a, 1);
 	}
 }
+
 void fun(){system("leaks push_swap");}
 int	main(int ac, char **av)
 {
