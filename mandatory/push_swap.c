@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/26 13:34:48 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:36:36 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int ac, char **av)
 		return (EXIT_SUCCESS);
 	sort_stack(&stack_a, &stack_b);
 	free_stack(stack_a);
-	free_stack(stack_b);
+	// free_stack(stack_b);
 	// atexit(fun);
 	return (EXIT_SUCCESS);
 }
