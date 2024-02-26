@@ -44,11 +44,7 @@ static int	**set_longest(int **lis, int size)
 	int		first;
 	int		second;
 
-	// (1) && (num = 0, len = 1, seq = 2, second = 1);
-	num = 0;
-	len = 1;
-	seq = 2;
-	second = 1;
+	(1) && (num = 0, len = 1, seq = 2, second = 1);
 	while (size--)
 	{
 		first = 0;
@@ -72,6 +68,7 @@ static int	**get_longest(t_stack *stack, int size)
 	int		index;
 	int		**lis;
 
+	size--;
 	(1) && (index = 0, lis = malloc(3 * sizeof(char **)),
 		lis[0] = malloc(size * sizeof(char *)),
 		lis[1] = malloc(size * sizeof(char *)),
@@ -86,7 +83,7 @@ static int	**get_longest(t_stack *stack, int size)
 		stack = stack->next;
 		index++;
 	}
-	return (lis = set_longest(lis, size), lis);
+	return (lis = set_longest(lis, size));
 }
 
 void	longest_in_sub(t_stack *stack, int size)
@@ -115,12 +112,4 @@ void	longest_in_sub(t_stack *stack, int size)
 	while (--index >= 0)
 		free(lis[index]);
 	free(lis);
-	// index = 0;
-	// size = sizeof(lis[0] / sizeof(lis[0][0]));
-	// ft_printf("------> %d\t", size);
-	// while (size--)
-	// {
-	// 	ft_printf("------> %d\t", lis[0][index]);
-	// 	index++;
-	// }
 }

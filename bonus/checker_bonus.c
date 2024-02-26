@@ -28,8 +28,7 @@ static void	check_actions(t_stack **stack_a, t_stack **stack_b,
 	free(input);
 	ft_lstclear(&ops, free);
 	free_stack(*stack_a);
-	free_stack(*stack_b);
-	message_error();
+	message_error(*stack_b, 1);
 }
 
 static void	do_actions(t_stack **stack_a, t_stack **stack_b, char *input)

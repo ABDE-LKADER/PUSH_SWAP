@@ -12,27 +12,25 @@
 
 #include "push_swap.h"
 
-void	message_error(void)
+void	message_error(t_stack *stack, int free)
 {
+	if (free)
+		free_stack(stack);
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
 
-void	check_double(t_stack *stack)
+static void	free_array(char *av)
 {
-	t_stack	*temp;
+	char *check;
 
-	while (stack)
+	check = ft_strtrim(av, " ");
+	if (!*check)
 	{
-		temp = stack->next;
-		while (temp)
-		{
-			if (stack->num == temp->num)
-				message_error();
-			temp = temp->next;
-		}
-		stack = stack->next;
+		free(check);
+		message_error(NULL, 0);
 	}
+	free(check);
 }
 
 int	check_is_sorted(t_stack *stack)
@@ -59,23 +57,21 @@ long	ft_atol(const char *str)
 	int		sign;
 	long	num;
 
-	i = 0;
+	(1) && (i = 0, sign = 1, num = 0);
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	sign = 1;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
-	num = 0;
 	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
 		num = num * 10 + str[i] - 48;
 		i++;
 		if (num * sign > INT_MAX || num * sign < INT_MIN)
-			message_error();
+			message_error(NULL, 0);
 	}
 	return (num * sign);
 }
@@ -93,18 +89,15 @@ void	check_in(int ac, char **av)
 		while (av[i][j])
 		{
 			if ((!ft_strchr(" -+0123456789", av[i][j])))
-				message_error();
+				message_error(NULL, 0);
 			else if (ft_strchr("-+", av[i][j]) && !ft_isdigit(av[i][j + 1]))
-				message_error();
+				message_error(NULL, 0);
 			else if (ft_isdigit(av[i][j])
 				&& !ft_strchr(" 0123456789", av[i][j + 1]))
-				message_error();
+				message_error(NULL, 0);
 			j++;
 		}
-		check = ft_strtrim(av[i], " ");
-		if (!*check)
-			message_error();
-		free(check);
+		free_array(av[i]);
 		ft_atol(av[i++]);
 	}
 }

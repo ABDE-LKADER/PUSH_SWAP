@@ -39,6 +39,25 @@ void	free_stack(t_stack *stack)
 	}
 }
 
+void	check_double(t_stack *stack)
+{
+	t_stack	*head;
+	t_stack	*temp;
+
+	head = stack;
+	while (stack)
+	{
+		temp = stack->next;
+		while (temp)
+		{
+			if (stack->num == temp->num)
+				message_error(head, 1);
+			temp = temp->next;
+		}
+		stack = stack->next;
+	}
+}
+
 void	add_num(t_stack **stack, char *value)
 {
 	t_stack	*node;

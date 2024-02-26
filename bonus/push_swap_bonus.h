@@ -23,13 +23,13 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void	message_error(void);
 long	ft_atol(const char *str);
 void	check_in(int ac, char **av);
 void	check_double(t_stack *stack);
 int		check_is_sorted(t_stack *stack);
+void	message_error(t_stack *stack, int free);
 
-size_t	size_stack(t_stack *stack);
+int		size_stack(t_stack *stack);
 t_stack	*parce_in(int ac, char **av);
 
 void	free_stack(t_stack *stack);

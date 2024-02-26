@@ -85,7 +85,6 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-// void fun(){system("leaks push_swap");}
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
@@ -97,10 +96,8 @@ int	main(int ac, char **av)
 	check_in(ac, av);
 	stack_a = parce_in(ac, av);
 	if (check_is_sorted(stack_a))
-		return (EXIT_SUCCESS);
+		return (free_stack(stack_a), EXIT_SUCCESS);
 	sort_stack(&stack_a, &stack_b);
 	free_stack(stack_a);
-	// free_stack(stack_b);
-	// atexit(fun);
 	return (EXIT_SUCCESS);
 }
