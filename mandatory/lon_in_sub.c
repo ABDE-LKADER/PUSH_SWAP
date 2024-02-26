@@ -44,7 +44,11 @@ static int	**set_longest(int **lis, int size)
 	int		first;
 	int		second;
 
-	(1) && (num = 0, len = 1, seq = 2, second = 1);
+	// (1) && (num = 0, len = 1, seq = 2, second = 1);
+	num = 0;
+	len = 1;
+	seq = 2;
+	second = 1;
 	while (size--)
 	{
 		first = 0;
