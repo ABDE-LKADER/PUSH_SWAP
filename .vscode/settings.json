@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "push_swap.h": "c",
-        "stdbool.h": "c",
-        "limits.h": "c",
-        "mylib.h": "c",
-        "chrono": "c"
-    }
-}
