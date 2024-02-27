@@ -36,7 +36,7 @@ HD_BONUS	=	bonus/push_swap_bonus.h
 MYAR		=	MYLIB/libar.a
 MYLB		=	MYLIB
 
-FLGS 		=	cc
+FLGS 		=	cc -Wall -Wextra -Werror
 RM			=	rm -f
 
 GREEN		=	"\033[1;32m"
