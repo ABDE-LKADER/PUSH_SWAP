@@ -67,12 +67,12 @@ $(OBJS_BONUS): %.o: %.c $(MYAR) $(HD_BONUS)
 
 clean:
 	@$(RM) $(OBJS) $(OBJS_BONUS)
-	@make clean -C $(MYLB)
+	@make clean -C $(MYLB) --no-print-directory
 	@echo $(YELOW)Done !!$(RESET)
 
 fclean: clean
 	@$(RM) $(NAME) $(NAME_BONUS)
-	@make fclean -C $(MYLB)
+	@make fclean -C $(MYLB) --no-print-directory
 	@echo $(REDCL)Done !!$(RESET)
 
 re: fclean all
