@@ -36,8 +36,8 @@ HD_BONUS	=	bonus/push_swap_bonus.h
 MYAR		=	MYLIB/libar.a
 MYLB		=	MYLIB
 
-FLGS 		=	cc -Wall -Wextra -Werror
-RM			=	rm -f
+FLGS 		=	cc -Wall -Wextra
+RM			=	rm -fr
 
 GREEN		=	"\033[1;32m"
 YELOW 		=	"\033[1;33m"

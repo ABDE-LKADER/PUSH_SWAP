@@ -14,8 +14,6 @@
 # define PUSH_SWAP_BONUS_H
 
 # include "mylib.h"
-# include <stdio.h>
-# include <limits.h>
 
 typedef struct s_stack
 {

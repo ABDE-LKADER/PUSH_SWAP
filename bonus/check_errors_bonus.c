@@ -80,7 +80,6 @@ void	check_in(int ac, char **av)
 {
 	int		i;
 	int		j;
-	char	*check;
 
 	i = 1;
 	while (i < ac)
