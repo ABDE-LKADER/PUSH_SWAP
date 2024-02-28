@@ -14,15 +14,13 @@
 # define PUSH_SWAP_H
 
 # include "mylib.h"
-# include <stdio.h>
-# include <limits.h>
 # include <stdbool.h>
 
 typedef struct s_stack
 {
 	int				num;
-	int				sub;
 	int				top;
+	bool			sub;
 	struct s_stack	*next;
 }	t_stack;
 
