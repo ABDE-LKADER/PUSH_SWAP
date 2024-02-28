@@ -67,12 +67,12 @@ $(OBJS_BONUS): %.o: %.c $(MYAR) $(HD_BONUS)
 
 clean:
 	@$(RM) $(OBJS) $(OBJS_BONUS)
-	@make clean -C MYLIB
+	@make clean -C $(MYLB)
 	@echo $(YELOW)Done !!$(RESET)
 
 fclean: clean
 	@$(RM) $(NAME) $(NAME_BONUS)
-	@make fclean -C MYLIB
+	@make fclean -C $(MYLB)
 	@echo $(REDCL)Done !!$(RESET)
 
 re: fclean all
