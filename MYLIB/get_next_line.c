@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 09:10:23 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/29 16:42:18 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:45:49 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,3 @@ char	*get_next_line(int fd)
 	save = strdup_next(save);
 	return (line);
 }
-
-pa
-za
-pa
