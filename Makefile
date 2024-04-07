@@ -6,7 +6,7 @@
 #    By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 17:23:22 by abadouab          #+#    #+#              #
-#    Updated: 2024/02/29 15:58:15 by abadouab         ###   ########.fr        #
+#    Updated: 2024/04/07 18:18:37 by abadouab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,19 @@ YELOW 		=	"\033[1;33m"
 REDCL 		=	"\033[1;31m"
 RESET 		=	"\033[0m"
 
-all: $(MYLB) $(NAME)
+all: start $(MYLB) $(NAME) finish
 	@echo $(GREEN)Done !!$(RESET)
+
+start:
+	@printf "\n"
+	@echo $(GREEN)"Starting build..."
+	@sleep 1
+	@printf "Loading [ "
+
+finish:
+	@echo $(GREEN) ] 100%$(RESET)
+	@echo $(GREEN)Project built.$(RESET)
+	@printf "\n"
 
 bonus: $(MYLB) $(NAME_BONUS)
 	@echo $(GREEN)Done !!$(RESET)
