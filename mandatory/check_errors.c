@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:19 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/26 12:39:32 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 15:40:54 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	message_error(t_stack *stack, int free)
 
 static void	free_array(char *av)
 {
-	char *check;
+	char	*check;
 
 	check = ft_strtrim(av, " ");
 	if (!*check)

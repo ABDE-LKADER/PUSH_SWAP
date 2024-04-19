@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/01 07:36:42 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:01:49 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,13 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+void lk(void){system("leaks push_swap");}
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	atexit(lk);
 	stack_b = NULL;
 	if (ac == 1)
 		return (EXIT_SUCCESS);

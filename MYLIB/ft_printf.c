@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 09:24:30 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/07 15:46:37 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:52:35 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_printf(const char *format, ...)
 	va_list	lstarg;
 
 	print = 0;
-	if (!format || write(1, format, 0) == -1)
+	if (write(1, format, 0) == -1)
 		return (-1);
 	va_start(lstarg, format);
 	while (*format)

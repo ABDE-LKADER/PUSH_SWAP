@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:07 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/18 15:13:21 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 16:14:02 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,15 @@ t_stack	*parce_in(int ac, char **av)
 	int		i;
 	int		j;
 
-	i = 1;
-	stack = NULL;
-	while (i < ac)
+	(1) && (i = 0, stack = NULL);
+	while (++i < ac)
 	{
 		if (ft_strchr(av[i], ' '))
 		{
 			j = 0;
 			spn = ft_split(av[i], ' ');
+			if (!spn)
+				return (free_stack(stack), NULL);
 			while (spn[j])
 			{
 				add_num(&stack, spn[j]);
@@ -105,7 +106,6 @@ t_stack	*parce_in(int ac, char **av)
 		}
 		else
 			add_num(&stack, av[i]);
-		i++;
 	}
 	return (check_double(stack), stack);
 }
