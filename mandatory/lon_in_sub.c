@@ -6,22 +6,11 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:50:45 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 16:12:06 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:21:56 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	check_is_sub(t_stack *stack)
-{
-	while (stack)
-	{
-		if (!stack->sub)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
 
 void	set_in_sub(t_stack *stack, int num)
 {
@@ -63,16 +52,38 @@ static int	**set_longest(int **lis, int size)
 	return (lis);
 }
 
+static void	cleanup(t_stack *stack, int **lis, int pos)
+{
+	int		index;
+
+	if (stack)
+		free_stack(stack);
+	if (pos != -1)
+	{
+		index = -1;
+		while (++index <= pos)
+			free(lis[index]);
+		free(lis);
+		exit(EXIT_FAILURE);
+	}
+}
+
 static int	**get_longest(t_stack *stack, int size)
 {
 	int		index;
 	int		**lis;
 
 	size--;
-	(1) && (index = 0, lis = malloc(3 * sizeof(char **)),
-		lis[0] = malloc(size * sizeof(char *)),
-		lis[1] = malloc(size * sizeof(char *)),
-		lis[2] = malloc(size * sizeof(char *)));
+	(1) && (index = -1, lis = malloc(3 * sizeof(int **)));
+	if (!lis)
+		cleanup(stack, lis, index);
+	while (++index <= 2)
+	{
+		lis[index] = malloc(size * sizeof(int *));
+		if (!lis[index])
+			cleanup(stack, lis, index);
+	}
+	index = 0;
 	while (stack)
 	{
 		stack->top = 0;

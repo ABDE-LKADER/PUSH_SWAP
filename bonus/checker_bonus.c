@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/29 18:06:15 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 21:09:14 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ static void	ft_checker(t_stack **stack_a, t_stack **stack_b)
 	{
 		tmp = ops->next;
 		do_actions(stack_a, stack_b, ops->content);
-		ft_lstdelone(ops, free);
-		ops = tmp;
+		(1) && (ft_lstdelone(ops, free), ops = tmp);
 	}
 	if (check_is_sorted(*stack_a) && !size_stack(*stack_b))
 		ft_printf("OK\n");

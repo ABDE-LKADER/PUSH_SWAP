@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:19 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 15:40:54 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 20:54:44 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ void	message_error(t_stack *stack, int free)
 	exit(EXIT_FAILURE);
 }
 
-static void	free_array(char *av)
+static void	empty_check(char *av)
 {
 	char	*check;
 
 	check = ft_strtrim(av, " ");
+	if (!check)
+		exit(EXIT_FAILURE);
 	if (!*check)
 	{
 		free(check);
@@ -96,7 +98,7 @@ void	check_in(int ac, char **av)
 				message_error(NULL, 0);
 			j++;
 		}
-		free_array(av[i]);
+		empty_check(av[i]);
 		ft_atol(av[i++]);
 	}
 }

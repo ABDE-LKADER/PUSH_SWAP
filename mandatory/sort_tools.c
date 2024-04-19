@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:22 by abadouab          #+#    #+#             */
-/*   Updated: 2024/02/26 11:45:35 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:13:06 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,17 @@ int	last_value(t_stack *stack)
 	while (stack->next)
 		stack = stack->next;
 	return (stack->num);
+}
+
+int	check_is_sub(t_stack *stack)
+{
+	while (stack)
+	{
+		if (!stack->sub)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
 
 int	lowest_value(t_stack *stack)
