@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 20:56:28 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/20 12:32:07 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,11 @@ int	main(int ac, char **av)
 
 	stack_b = NULL;
 	if (ac == 1)
-		return (EXIT_SUCCESS);
+		return (EXIT_FAILURE);
 	check_in(ac, av);
 	stack_a = parce_in(ac, av);
+	if (!stack_a)
+		return (EXIT_FAILURE);
 	if (check_is_sorted(stack_a))
 		return (free_stack(stack_a), EXIT_SUCCESS);
 	sort_stack(&stack_a, &stack_b);

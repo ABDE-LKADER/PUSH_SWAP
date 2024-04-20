@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:07 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 20:59:01 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/20 12:31:15 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ void	add_num(t_stack **stack, char *value)
 		return ;
 	new = malloc(sizeof(t_stack));
 	if (!new)
-		return ;
+	{
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 	new->num = ft_atol(value);
 	new->next = NULL;
 	if (!(*stack))

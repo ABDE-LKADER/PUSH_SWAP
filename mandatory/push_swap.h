@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:34 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 15:16:11 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/20 11:54:05 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 typedef struct s_stack
 {
 	int				num;
-	int				top;
 	bool			sub;
+	int				target;
 	struct s_stack	*next;
-}	t_stack;
+}					t_stack;
 
 long	ft_atol(const char *str);
 void	check_in(int ac, char **av);

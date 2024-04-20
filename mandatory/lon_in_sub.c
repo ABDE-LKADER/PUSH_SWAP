@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:50:45 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/19 19:21:56 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/20 12:33:04 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ static int	**get_longest(t_stack *stack, int size)
 	index = 0;
 	while (stack)
 	{
-		stack->top = 0;
 		stack->sub = 0;
+		stack->target = 0;
 		lis[0][index] = stack->num;
 		lis[1][index] = 1;
 		lis[2][index] = -1;
