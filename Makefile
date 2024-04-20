@@ -45,7 +45,6 @@ REDCL 		=	"\033[1;31m"
 RESET 		=	"\033[0m"
 
 all: start $(MYLB) $(NAME) finish
-	@echo $(GREEN)Done !!$(RESET)
 
 bonus: start $(MYLB) $(NAME_BONUS) finish
 

@@ -64,8 +64,8 @@ static void	cleanup(t_stack *stack, int **lis, int pos)
 		while (++index <= pos)
 			free(lis[index]);
 		free(lis);
-		exit(EXIT_FAILURE);
 	}
+	exit(EXIT_FAILURE);
 }
 
 static int	**get_longest(t_stack *stack, int size)

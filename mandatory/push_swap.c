@@ -92,7 +92,7 @@ int	main(int ac, char **av)
 
 	stack_b = NULL;
 	if (ac == 1)
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	check_in(ac, av);
 	stack_a = parce_in(ac, av);
 	if (!stack_a)

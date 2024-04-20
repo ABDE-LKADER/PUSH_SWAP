@@ -60,7 +60,7 @@ static void	do_actions(t_stack **stack_a, t_stack **stack_b, char *input)
 		rrr(stack_a, stack_b);
 }
 
-static void	ft_checker(t_stack **stack_a, t_stack **stack_b)
+static t_list	*get_actions(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*op;
 	t_list	*ops;
@@ -74,8 +74,23 @@ static void	ft_checker(t_stack **stack_a, t_stack **stack_b)
 			break ;
 		check_actions(stack_a, stack_b, ops, op);
 		tmp = ft_lstnew(op);
+		if (!tmp)
+		{
+			(1) && (free(op), ft_lstclear(&ops, free), 1);
+			(1) && (free_stack(*stack_a), free_stack(*stack_b), 1);
+			exit(EXIT_FAILURE);
+		}
 		ft_lstadd_back(&ops, tmp);
 	}
+	return (ops);
+}
+
+static void	ft_checker(t_stack **stack_a, t_stack **stack_b)
+{
+	t_list	*ops;
+	t_list	*tmp;
+
+	ops = get_actions(stack_a, stack_b);
 	while (ops)
 	{
 		tmp = ops->next;
@@ -95,7 +110,7 @@ int	main(int ac, char **av)
 
 	stack_b = NULL;
 	if (ac == 1)
-		return (EXIT_FAILURE);
+		return (EXIT_SUCCESS);
 	check_in(ac, av);
 	stack_a = parce_in(ac, av);
 	if (!stack_a)
