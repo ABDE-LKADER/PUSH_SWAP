@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/20 12:32:08 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/21 23:34:13 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ static t_list	*get_actions(t_stack **stack_a, t_stack **stack_b)
 		tmp = ft_lstnew(op);
 		if (!tmp)
 		{
-			(1) && (free(op), ft_lstclear(&ops, free), 1);
-			(1) && (free_stack(*stack_a), free_stack(*stack_b), 1);
+			(free(op), ft_lstclear(&ops, free));
+			(free_stack(*stack_a), free_stack(*stack_b));
 			exit(EXIT_FAILURE);
 		}
 		ft_lstadd_back(&ops, tmp);
@@ -97,7 +97,7 @@ static void	ft_checker(t_stack **stack_a, t_stack **stack_b)
 		do_actions(stack_a, stack_b, ops->content);
 		(1) && (ft_lstdelone(ops, free), ops = tmp);
 	}
-	if (check_is_sorted(*stack_a) && !size_stack(*stack_b))
+	if (check_is_sorted(*stack_a) && !(*stack_b))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
