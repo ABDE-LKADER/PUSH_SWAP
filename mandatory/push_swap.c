@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:37 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/21 21:33:57 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/21 23:42:49 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,6 @@ static void	sort_less(t_stack **stack_a)
 		rrab(stack_a, 1);
 }
 
-
-{
-	if (size == 3)
-	{
-		sort_less(stack_a);
-		return ;
-	}
-	else if (size == 5)
-	{
-		sort_less(stack_a);
-		return ;
-	}
-}
-
 static void	sort_quick(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int		pivot;
@@ -82,8 +68,11 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		sab(stack_a, 1);
 		return ;
 	}
-	else
-		
+	else if (size == 3)
+	{
+		sort_less(stack_a);
+		return ;
+	}
 	sort_quick(stack_a, stack_b, size);
 	while (*stack_b)
 		best_move(stack_a, stack_b);
