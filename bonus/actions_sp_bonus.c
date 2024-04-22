@@ -12,6 +12,19 @@
 
 #include "push_swap_bonus.h"
 
+int	size_stack(t_stack *stack)
+{
+	int	len;
+
+	len = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		len++;
+	}
+	return (len);
+}
+
 void	sab(t_stack **stack)
 {
 	t_stack	*temp;

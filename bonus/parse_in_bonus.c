@@ -12,17 +12,13 @@
 
 #include "push_swap_bonus.h"
 
-int	size_stack(t_stack *stack)
+static void	cleanup(t_stack *stack, char **spn, int index)
 {
-	int	len;
-
-	len = 0;
-	while (stack)
-	{
-		stack = stack->next;
-		len++;
-	}
-	return (len);
+	while (spn[index])
+		free(spn[index++]);
+	free(spn);
+	free_stack(stack);
+	exit(EXIT_FAILURE);
 }
 
 void	free_stack(t_stack *stack)
@@ -58,30 +54,28 @@ void	check_double(t_stack *stack)
 	}
 }
 
-void	add_num(t_stack **stack, char *value)
+int	add_num(t_stack **stack, char *value)
 {
 	t_stack	*node;
 	t_stack	*new;
 
 	if (!stack)
-		return ;
+		return (1);
 	new = malloc(sizeof(t_stack));
 	if (!new)
-	{
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+		return (0);
 	new->num = ft_atol(value);
 	new->next = NULL;
 	if (!(*stack))
 	{
 		*stack = new;
-		return ;
+		return (1);
 	}
 	node = *stack;
 	while (node->next)
 		node = node->next;
 	node->next = new;
+	return (1);
 }
 
 t_stack	*parce_in(int ac, char **av)
@@ -96,19 +90,19 @@ t_stack	*parce_in(int ac, char **av)
 	{
 		if (ft_strchr(av[i], ' '))
 		{
-			j = 0;
-			spn = ft_split(av[i], ' ');
+			(1) && (j = 0, spn = ft_split(av[i], ' '));
 			if (!spn)
 				return (free_stack(stack), NULL);
 			while (spn[j])
 			{
-				add_num(&stack, spn[j]);
+				if (!add_num(&stack, spn[j]))
+					cleanup(stack, spn, j);
 				free(spn[j++]);
 			}
 			free(spn);
 		}
-		else
-			add_num(&stack, av[i]);
+		else if (!add_num(&stack, av[i]))
+			return (free_stack(stack), NULL);
 	}
 	return (check_double(stack), stack);
 }
