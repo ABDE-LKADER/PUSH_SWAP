@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	set_in_sub(t_stack *stack, int num)
+static void	set_in_sub(t_stack *stack, int num)
 {
 	while (stack)
 	{

@@ -35,7 +35,7 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-void	check_double(t_stack *stack)
+static void	check_double(t_stack *stack)
 {
 	t_stack	*head;
 	t_stack	*temp;
@@ -54,7 +54,7 @@ void	check_double(t_stack *stack)
 	}
 }
 
-int	add_num(t_stack **stack, char *value)
+static int	add_num(t_stack **stack, char *value)
 {
 	t_stack	*node;
 	t_stack	*new;

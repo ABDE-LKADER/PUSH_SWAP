@@ -26,13 +26,11 @@ typedef struct s_stack
 
 long	ft_atol(const char *str);
 void	check_in(int ac, char **av);
-void	check_double(t_stack *stack);
 int		check_is_sorted(t_stack *stack);
 void	message_error(t_stack *stack, int free);
 
 int		size_stack(t_stack *stack);
 t_stack	*parce_in(int ac, char **av);
-int		add_num(t_stack **stack, char *value);
 
 void	free_stack(t_stack *stack);
 int		check_is_sub(t_stack *stack);
