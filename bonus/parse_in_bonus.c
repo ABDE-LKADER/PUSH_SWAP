@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 20:43:07 by abadouab          #+#    #+#             */
+/*   Created: 2024/01/12 20:43:08 by abadouab          #+#    #+#             */
 /*   Updated: 2024/04/20 12:31:15 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -19,20 +19,6 @@ static void	cleanup(t_stack *stack, char **spn, int index)
 	free(spn);
 	free_stack(stack);
 	exit(EXIT_FAILURE);
-}
-
-void	free_stack(t_stack *stack)
-{
-	t_stack	*loop;
-
-	if (!stack)
-		return ;
-	while (stack)
-	{
-		loop = stack->next;
-		free(stack);
-		stack = loop;
-	}
 }
 
 static void	check_double(t_stack *stack)

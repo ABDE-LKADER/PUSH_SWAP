@@ -5,25 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 20:43:56 by abadouab          #+#    #+#             */
+/*   Created: 2024/01/12 20:43:54 by abadouab          #+#    #+#             */
 /*   Updated: 2024/02/23 12:03:31 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-
-int	size_stack(t_stack *stack)
-{
-	int	len;
-
-	len = 0;
-	while (stack)
-	{
-		stack = stack->next;
-		len++;
-	}
-	return (len);
-}
 
 void	sab(t_stack **stack)
 {
