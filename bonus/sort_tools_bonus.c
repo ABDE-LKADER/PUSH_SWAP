@@ -1,3 +1,5 @@
+#include "push_swap_bonus.h"
+
 int	size_stack(t_stack *stack)
 {
 	int	len;

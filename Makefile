@@ -23,9 +23,10 @@ SRCS		=	mandatory/parse_in.c \
 NAME_BONUS	=	checker
 SRCS_BONUS	=	bonus/checker_bonus.c  \
 				bonus/parse_in_bonus.c  \
-				bonus/actions_sp_bonus.c \
-				bonus/actions_ro_bonus.c  \
-				bonus/check_errors_bonus.c \
+				bonus/sort_tools_bonus.c \
+				bonus/actions_sp_bonus.c  \
+				bonus/actions_ro_bonus.c   \
+				bonus/check_errors_bonus.c  \
 
 OBJS 		=	$(SRCS:.c=.o)
 OBJS_BONUS 	=	$(SRCS_BONUS:.c=.o)
