@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 20:43:07 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/20 10:15:11 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/04/22 10:22:12 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,10 @@ int	add_num(t_stack **stack, char *value)
 {
 	t_stack	*node;
 	t_stack	*new;
-	static int x;
 
 	if (!stack)
 		return (1);
-	x++;
-	if (x == 4)
-		new = NULL;
-	else
-		new = malloc(sizeof(t_stack));
+	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (0);
 	new->num = ft_atol(value);
@@ -95,7 +90,7 @@ t_stack	*parce_in(int ac, char **av)
 	{
 		if (ft_strchr(av[i], ' '))
 		{
-			(j = 0, spn = ft_split(av[i], ' '));
+			(1) && (j = 0, spn = ft_split(av[i], ' '));
 			if (!spn)
 				return (free_stack(stack), NULL);
 			while (spn[j])
@@ -106,9 +101,8 @@ t_stack	*parce_in(int ac, char **av)
 			}
 			free(spn);
 		}
-		else
-			if (!add_num(&stack, av[i]))
-				return (free_stack(stack), NULL);
+		else if (!add_num(&stack, av[i]))
+			return (free_stack(stack), NULL);
 	}
 	return (check_double(stack), stack);
 }
