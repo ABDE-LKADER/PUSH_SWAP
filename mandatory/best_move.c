@@ -12,6 +12,13 @@
 
 #include "push_swap.h"
 
+static int	last_value(t_stack *stack)
+{
+	while (stack->next)
+		stack = stack->next;
+	return (stack->num);
+}
+
 static int	set_top(t_stack *stack, int num)
 {
 	int		min;

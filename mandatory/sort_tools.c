@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 
-int	last_value(t_stack *stack)
-{
-	while (stack->next)
-		stack = stack->next;
-	return (stack->num);
-}
-
 int	check_is_sub(t_stack *stack)
 {
 	while (stack)
@@ -28,6 +21,19 @@ int	check_is_sub(t_stack *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+int	size_stack(t_stack *stack)
+{
+	int	len;
+
+	len = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		len++;
+	}
+	return (len);
 }
 
 int	lowest_value(t_stack *stack)
