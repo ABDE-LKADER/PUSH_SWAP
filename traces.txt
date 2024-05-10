@@ -1,3 +1,0 @@
-Multiple size <= 100
-OK
-Multiple size <= 500

@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:36 by abadouab          #+#    #+#             */
-/*   Updated: 2024/05/10 12:08:34 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:14:01 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static void	sort_min(t_stack **stack_a, t_stack **stack_b, int size)
 
 	if (size == 3)
 	{
-		sort_less(stack_a);
+		if (!check_is_sorted(*stack_a))
+			sort_less(stack_a);
 		while (*stack_b)
 			pab(stack_a, stack_b, 1);
 		return ;
