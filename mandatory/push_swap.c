@@ -6,7 +6,7 @@
 /*   By: abadouab <abadouab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:18:36 by abadouab          #+#    #+#             */
-/*   Updated: 2024/04/21 23:42:49 by abadouab         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:08:34 by abadouab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,27 @@ static void	sort_less(t_stack **stack_a)
 		rrab(stack_a, 1);
 }
 
+static void	sort_min(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	int	lowest;
+
+	if (size == 3)
+	{
+		sort_less(stack_a);
+		while (*stack_b)
+			pab(stack_a, stack_b, 1);
+		return ;
+	}
+	lowest = lowest_value(*stack_a);
+	if ((*stack_a)->num == lowest)
+		pab(stack_b, stack_a, 2);
+	else if (!get_position(*stack_a, lowest))
+		rab(stack_a, 1);
+	else
+		rrab(stack_a, 1);
+	sort_min(stack_a, stack_b, size_stack(*stack_a));
+}
+
 static void	sort_quick(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int		pivot;
@@ -61,6 +82,7 @@ static void	sort_quick(t_stack **stack_a, t_stack **stack_b, int size)
 static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	int		size;
+	int		lowest;
 
 	size = size_stack(*stack_a);
 	if (size == 2)
@@ -68,17 +90,18 @@ static void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		sab(stack_a, 1);
 		return ;
 	}
-	else if (size == 3)
+	if (size <= 5)
 	{
-		sort_less(stack_a);
+		sort_min(stack_a, stack_b, size);
 		return ;
 	}
 	sort_quick(stack_a, stack_b, size);
 	while (*stack_b)
 		best_move(stack_a, stack_b);
-	while ((*stack_a)->num != lowest_value(*stack_a))
+	lowest = lowest_value(*stack_a);
+	while ((*stack_a)->num != lowest)
 	{
-		if (!get_position(*stack_a, lowest_value(*stack_a)))
+		if (!get_position(*stack_a, lowest))
 			rab(stack_a, 1);
 		else
 			rrab(stack_a, 1);
